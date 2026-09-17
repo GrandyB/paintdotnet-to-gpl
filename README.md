@@ -18,8 +18,8 @@ npm run dev
 Open [http://localhost:3000](http://localhost:3000).
 
 ```bash
-npm run build   # static export to out/
-npm start       # not used for static export; serve out/ with any static host
+npm run build
+npm start
 ```
 
 ## Push to a new GitHub repo
@@ -41,4 +41,4 @@ git push -u origin main
 
 1. Push the repo to GitHub (above).
 2. Import the project in [Vercel](https://vercel.com/new) (framework: Next.js).
-3. Deploy — no environment variables required. The app uses `output: 'export'` for a static site.
+3. Deploy — no environment variables required. Ensure Framework Preset is **Next.js**. The app is fully client-side (nothing is uploaded or stored).
