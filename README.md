@@ -41,4 +41,4 @@ git push -u origin main
 
 1. Push the repo to GitHub (above).
 2. Import the project in [Vercel](https://vercel.com/new) (framework: Next.js).
-3. Deploy — no environment variables required. Ensure Framework Preset is **Next.js**. The app is fully client-side (nothing is uploaded or stored).
+3. Deploy — no environment variables required. Framework Preset must be **Next.js** (pinned in `vercel.json`). Do not set Output Directory to `public`. The app is fully client-side (nothing is uploaded or stored).
