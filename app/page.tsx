@@ -87,11 +87,11 @@ export default function Home() {
 
   return (
     <main className="mx-auto flex w-full max-w-lg flex-1 flex-col gap-6 px-4 py-12">
-      <header className="space-y-1">
+      <header className="space-y-1 pr-12">
         <h1 className="text-2xl font-semibold tracking-tight">
           Paint.NET → GIMP
         </h1>
-        <p className="text-sm text-zinc-600">
+        <p className="text-sm text-muted">
           Convert a Paint.NET palette file to a GIMP{" "}
           <code className="font-mono text-xs">.gpl</code> file. Everything runs
           in your browser — nothing is uploaded.
@@ -124,8 +124,8 @@ export default function Home() {
         className={[
           "cursor-pointer rounded-lg border-2 border-dashed px-6 py-10 text-center transition-colors",
           dragging
-            ? "border-zinc-900 bg-zinc-100"
-            : "border-zinc-300 bg-white hover:border-zinc-400",
+            ? "border-border-strong bg-drop-bg-active"
+            : "border-border bg-drop-bg hover:border-border-strong",
         ].join(" ")}
       >
         <input
@@ -139,23 +139,23 @@ export default function Home() {
             e.target.value = "";
           }}
         />
-        <p className="text-sm font-medium text-zinc-800">
+        <p className="text-sm font-medium text-foreground">
           {fileName
             ? fileName
             : "Drop a Paint.NET palette here, or click to browse"}
         </p>
-        <p className="mt-1 text-xs text-zinc-500">
+        <p className="mt-1 text-xs text-muted">
           Usually a <code className="font-mono">.txt</code> from Paint.NET User
           Files → Palettes
         </p>
       </div>
 
-      <label className="flex flex-wrap items-center gap-3 rounded-lg bg-white px-4 py-3 text-sm shadow-sm ring-1 ring-zinc-200">
+      <label className="flex flex-wrap items-center gap-3 rounded-lg bg-surface px-4 py-3 text-sm shadow-sm ring-1 ring-border">
         <input
           type="checkbox"
           checked={ignoreEnabled}
           onChange={(e) => setIgnoreEnabled(e.target.checked)}
-          className="size-4 accent-zinc-900"
+          className="size-4 accent-button-bg"
         />
         <span className="font-medium">Ignore color</span>
         <input
@@ -172,19 +172,19 @@ export default function Home() {
           disabled={!ignoreEnabled}
           onChange={(e) => setIgnoreHex(e.target.value)}
           spellCheck={false}
-          className="w-24 rounded border border-zinc-300 px-2 py-1 font-mono text-xs uppercase disabled:opacity-40"
+          className="w-24 rounded border border-input-border bg-background px-2 py-1 font-mono text-xs uppercase disabled:opacity-40"
           aria-label="Ignore color hex"
         />
       </label>
 
       {displayError && (
-        <p className="rounded-lg bg-red-50 px-4 py-3 text-sm text-red-700 ring-1 ring-red-200">
+        <p className="rounded-lg bg-error-bg px-4 py-3 text-sm text-error-fg ring-1 ring-error-border">
           {displayError}
         </p>
       )}
 
       {colors && colors.length > 0 && (
-        <section className="space-y-3 rounded-lg bg-white p-4 shadow-sm ring-1 ring-zinc-200">
+        <section className="space-y-3 rounded-lg bg-surface p-4 shadow-sm ring-1 ring-border">
           <div className="flex items-center justify-between gap-3">
             <h2 className="text-sm font-medium">
               {colors.length} color{colors.length === 1 ? "" : "s"}
@@ -192,7 +192,7 @@ export default function Home() {
             <button
               type="button"
               onClick={downloadGpl}
-              className="rounded-md bg-zinc-900 px-3 py-1.5 text-sm font-medium text-white hover:bg-zinc-700"
+              className="rounded-md bg-button-bg px-3 py-1.5 text-sm font-medium text-button-fg hover:bg-button-hover"
             >
               Download .gpl
             </button>
@@ -202,7 +202,7 @@ export default function Home() {
               <li
                 key={`${rgbToHex(c)}-${i}`}
                 title={rgbToHex(c)}
-                className="size-8 rounded border border-zinc-300"
+                className="size-8 rounded border border-border"
                 style={{ backgroundColor: rgbToHex(c) }}
               />
             ))}
